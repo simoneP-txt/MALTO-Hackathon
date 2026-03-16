@@ -1,0 +1,44 @@
+{
+  "submission2": {
+    "pipeline": "5-phase hierarchical binary classification",
+    "cv_f1_macro_10fold": 0.9596,
+    "n_folds": 10,
+    "optuna_trial": 1148,
+    "phases_1_to_4": {
+      "model": "LinearSVC",
+      "params": {
+        "C": 6.9463,
+        "max_iter": 3000,
+        "class_weight": "balanced"
+      },
+      "tfidf": {
+        "max_features": 7680,
+        "ngram_range": [
+          1,
+          1
+        ],
+        "sublinear_tf": true,
+        "min_df": 3
+      },
+      "phase_1": "Human (0) vs AI (1,2,3,4,5)",
+      "phase_2": "Label 4 vs (1,2,3,5)",
+      "phase_3": "Label 3 vs (1,2,5)",
+      "phase_4": "Label 5 vs (1,2)"
+    },
+    "phase_5": {
+      "task": "Label 1 vs Label 2",
+      "features": "ImpCHI (Improved Chi-squared, top-K per class) + stylometric (30 features)",
+      "impchi_k_per_class": 65,
+      "model": "HistGradientBoostingClassifier",
+      "params": {
+        "max_iter": 76,
+        "max_depth": 11,
+        "learning_rate": 0.0993,
+        "max_leaf_nodes": 9,
+        "min_samples_leaf": 6,
+        "l2_regularization": 1.4705,
+        "class_weight": "balanced"
+      }
+    }
+  }
+}
