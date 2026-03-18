@@ -1,0 +1,49 @@
+{
+  "submission9": {
+    "pipeline": "5-phase hierarchical binary classification",
+    "cv_f1_e2e_3fold": 0.9502379127072036,
+    "cv_f1_p5_loocv": 0.8626373626373627,
+    "cv_f1_optuna": 0.9468698532085141,
+    "n_folds": 3,
+    "optuna_trial": 264,
+    "phases_1_to_4": {
+      "model": "LinearSVC",
+      "params": {
+        "C": 3.1831338684063875,
+        "max_iter": 3000,
+        "class_weight": "balanced"
+      },
+      "tfidf": {
+        "max_features": 4853,
+        "ngram_range": [
+          1,
+          1
+        ],
+        "sublinear_tf": true,
+        "min_df": 1
+      },
+      "phase_1": "Human (0) vs AI (1,2,3,4,5)",
+      "phase_2": "Label 4 vs (1,2,3,5)",
+      "phase_3": "Label 3 vs (1,2,5)",
+      "phase_4": "Label 5 vs (1,2)"
+    },
+    "phase_5": {
+      "task": "Label 1 vs Label 2",
+      "features": "ImpCHI + stylometric (30 features)",
+      "impchi_k_per_class": 17,
+      "impchi_max_features": 13855,
+      "impchi_ngram_max": 3,
+      "impchi_min_df": 4,
+      "model": "HistGradientBoostingClassifier",
+      "params": {
+        "max_iter": 116,
+        "max_depth": 8,
+        "learning_rate": 0.03777525324514728,
+        "max_leaf_nodes": 9,
+        "min_samples_leaf": 5,
+        "l2_regularization": 8.52912261270341,
+        "class_weight": "balanced"
+      }
+    }
+  }
+}
