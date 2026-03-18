@@ -1,0 +1,62 @@
+{
+  "submission14": {
+    "pipeline": "5-phase hierarchical binary classification",
+    "cv_f1_optuna": 0.9615332507011163,
+    "optuna_trial": 1482,
+    "phases_1_to_4": {
+      "model": "LinearSVC",
+      "mode": "shared",
+      "voting": false,
+      "params": {
+        "max_iter": 3000,
+        "class_weight": "balanced",
+        "C": 10.331034316504713
+      },
+      "tfidf": {
+        "max_features": 6580,
+        "ngram_range": [
+          1,
+          1
+        ],
+        "sublinear_tf": true,
+        "min_df": 3
+      },
+      "phase_1": "Human (0) vs AI (1,2,3,4,5)",
+      "phase_2": "Label 4 vs (1,2,3,5)",
+      "phase_3": "Label 3 vs (1,2,5)",
+      "phase_4": "Label 5 vs (1,2)"
+    },
+    "phase_5": {
+      "task": "Label 1 vs Label 2",
+      "model": "HistGradientBoostingClassifier",
+      "voting": true,
+      "features": "ImpCHI + stylometric (all_30)",
+      "stylo_subset": "all_30",
+      "impchi_k_per_class": 53,
+      "impchi_max_features": 17362,
+      "impchi_ngram_range": [
+        1,
+        2
+      ],
+      "impchi_min_df": 1,
+      "impchi_sublinear": true,
+      "params": {
+        "max_iter": 191,
+        "max_depth": 12,
+        "learning_rate": 0.1440606672749625,
+        "max_leaf_nodes": 11,
+        "min_samples_leaf": 5,
+        "l2_regularization": 1.8559147621626852,
+        "class_weight": "balanced"
+      },
+      "v2_params": {
+        "learning_rate": 0.03180671296098061,
+        "l2_regularization": 3.321683113087308
+      },
+      "v3_params": {
+        "learning_rate": 0.013796977406568156,
+        "l2_regularization": 8.364656004647536
+      }
+    }
+  }
+}

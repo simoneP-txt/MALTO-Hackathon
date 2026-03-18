@@ -1,0 +1,11 @@
+{
+  "submission19": {
+    "pipeline": "ensemble",
+    "ensemble_type": "priority_vote",
+    "priority": "submission4",
+    "members": [
+      "submission2",
+      "submission4"
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "submission16": {
+    "pipeline": "5-phase hierarchical binary classification",
+    "cv_f1_optuna": 0.9664147884020602,
+    "optuna_trial": 3500,
+    "phases_1_to_4": {
+      "model": "LinearSVC",
+      "mode": "per_phase",
+      "voting": true,
+      "params": {
+        "max_iter": 3000,
+        "class_weight": "balanced",
+        "C_p1": 0.2193291736573894,
+        "C_p2": 7.001717958958414,
+        "C_p3": 0.7369540736803477,
+        "C_p4": 4.316973912833916,
+        "C_v2_p1": 0.11887586197163735,
+        "C_v2_p2": 0.08294738704798314,
+        "C_v2_p3": 0.10586303190735682,
+        "C_v2_p4": 1.192648713705775,
+        "C_v3_p1": 0.31938154885110076,
+        "C_v3_p2": 11.388852619057493,
+        "C_v3_p3": 0.08228425108892821,
+        "C_v3_p4": 8.188036097413814
+      },
+      "tfidf": {
+        "max_features": 3878,
+        "ngram_range": [
+          1,
+          1
+        ],
+        "sublinear_tf": true,
+        "min_df": 5
+      },
+      "phase_1": "Human (0) vs AI (1,2,3,4,5)",
+      "phase_2": "Label 4 vs (1,2,3,5)",
+      "phase_3": "Label 3 vs (1,2,5)",
+      "phase_4": "Label 5 vs (1,2)"
+    },
+    "phase_5": {
+      "task": "Label 1 vs Label 2",
+      "model": "LGBMClassifier",
+      "voting": true,
+      "features": "ImpCHI + stylometric (no_pos)",
+      "stylo_subset": "no_pos",
+      "impchi_k_per_class": 34,
+      "impchi_max_features": 10394,
+      "impchi_ngram_range": [
+        1,
+        2
+      ],
+      "impchi_min_df": 3,
+      "impchi_sublinear": false,
+      "params": {
+        "max_iter": 242,
+        "max_depth": 15,
+        "learning_rate": 0.1313685914536084,
+        "max_leaf_nodes": 30,
+        "min_samples_leaf": 11,
+        "l2_regularization": 5.529738017287996,
+        "class_weight": "none"
+      },
+      "v2_params": {
+        "learning_rate": 0.14637467399297702,
+        "l2_regularization": 0.0026229238753974603
+      },
+      "v3_params": {
+        "learning_rate": 0.1253238358123517,
+        "l2_regularization": 0.7066355263304143
+      }
+    }
+  }
+}
